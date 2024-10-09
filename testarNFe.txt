@@ -1,0 +1,40 @@
+{
+    "cNF": "123456",
+    "natOp": "Venda de mercadorias",
+    "indPag": "0", 
+    "emit": {
+        "CNPJ": "12345678000195",
+        "xNome": "Nome do Emitente",
+        "enderEmit": {
+            "xLgr": "Rua Exemplo",
+            "nro": "123",
+            "xBairro": "Centro",
+            "cMun": "1234567",
+            "xMun": "Nome do Município",
+            "UF": "SP",
+            "CEP": "12345678"
+        }
+    },
+    "dest": {
+        "CNPJ": "98765432000176",
+        "xNome": "Nome do Destinatário",
+        "enderDest": {
+            "xLgr": "Avenida Exemplo",
+            "nro": "456",
+            "xBairro": "Jardim",
+            "cMun": "7654321",
+            "xMun": "Nome do Município",
+            "UF": "RJ",
+            "CEP": "87654321"
+        }
+    },
+    "itens": [
+        {
+            "cProd": "001",
+            "xProd": "Produto Exemplo",
+            "qCom": "10",
+            "vProd": "100.00",
+            "cEAN": "1234567890123"
+        }
+    ]
+}

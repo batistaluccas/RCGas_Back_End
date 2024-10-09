@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,18 @@ SECRET_KEY = 'django-insecure-ft7wg#s@o4kbi(mrp@aj_)ett9cuo)w4uqq*-l)2-85gzuhb&*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Defina DJANGO_ENV como 'homologacao' em seu terminal ou arquivo .env
+
+if config('DJANGO_ENV') == 'production':
+    # Configurações de produção
+    ALLOWED_HOSTS = ['seu_dominio.com']
+    DEBUG = False
+else:
+    # Configurações de homologação
+    ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+    DEBUG = True
+
+
 
 
 # Application definition
@@ -62,12 +75,15 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5501",
 ]
 
+
+
+
 ROOT_URLCONF = '_project.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,7 +101,6 @@ WSGI_APPLICATION = '_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -123,7 +138,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -133,7 +148,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

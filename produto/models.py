@@ -16,6 +16,13 @@ class Produto(models.Model):
     preco_produto = models.FloatField(blank=True, null=True)
     nivel_abastecimento = models.IntegerField(blank=True, null=True)
     imagem_produto = models.CharField(max_length=100, blank=True, null=True)
+    ncm = models.CharField(max_length=20, blank=True, null=True)
+    cfop = models.CharField(max_length=20, blank=True, null=True)
+    unidade_comercial = models.CharField(max_length=20, blank=True, null=True)
+    icms_modalidade = models.CharField(max_length=20, blank=True, null=True)
+    icms_csosn = models.CharField(max_length=20, blank=True, null=True)
+    pis_modalidade = models.CharField(max_length=20, blank=True, null=True)
+    cofins_modalidade = models.CharField(max_length=20, blank=True, null=True)
 
     def __str__(self):
         return self.nome_produto

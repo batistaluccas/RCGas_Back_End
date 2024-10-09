@@ -8,6 +8,7 @@
 from django.db import models
 
 
+
 class Bairro(models.Model):
     id_bairro = models.AutoField(primary_key=True)
     nome_bairro = models.CharField(max_length=100)
@@ -19,15 +20,16 @@ class Bairro(models.Model):
 
     def __str__(self):
         return self.nome_bairro
-        
+
 
 class Cliente(models.Model):
     id_cliente = models.AutoField(primary_key=True)
+    cpf_cliente = models.CharField(max_length=100)
     nome_cliente = models.CharField(max_length=100)
     telefone_cliente = models.CharField(max_length=100)
     rua_cliente = models.CharField(max_length=100, blank=True, null=True)
     numero_cliente = models.CharField(max_length=100, blank=True, null=True)
-    id_bairro = models.ForeignKey('Bairro', models.DO_NOTHING, db_column='id_bairro', blank=True, null=True)
+    id_bairro = models.ForeignKey(Bairro, models.DO_NOTHING, db_column='id_bairro', blank=True, null=True)
 
     class Meta:
         managed = False
